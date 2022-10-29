@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  config-server:
+    image: guilhermejr/sistema-config-server
+    container_name: config-server
+    restart: always
+    ports:
+      - "8888:8888"
+
+networks:
+  default:
+    external:
+      name: rede
