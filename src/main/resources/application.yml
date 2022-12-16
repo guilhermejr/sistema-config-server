@@ -15,10 +15,13 @@ spring:
       scheme: ${VAULT_SCHEME:http}
       uri: ${VAULT_SCHEME:http}://${VAULT_HOST:localhost}:${VAULT_PORT:8200}
       token: ${VAULT_TOKEN:hvs.VSlxeCypMevB7HLAYZ1hB73L}
+      generic:
+        enabled: true
+        application-name: config-server
     config:
       server:
         git:
-          uri: https://${configServerHost:github.com/guilhermejr/repositorio-cofiguracao-sistema-dev}
+          uri: https://github.com/guilhermejr/repositorio-cofiguracao-sistema-prd
           search-paths: '{application}'
   boot:
     admin:
@@ -46,7 +49,7 @@ eureka:
     service-url:
       defaultZone: 'http://${sistema.eureka.login}:${sistema.eureka.senha}@${sistema.eureka.host}:8761/eureka'
   instance:
-    hostname: 'config-server'
+    hostname: ${eurekaHostname}
 
 
 management:
