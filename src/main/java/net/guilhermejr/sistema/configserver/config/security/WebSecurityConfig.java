@@ -43,12 +43,12 @@ public class WebSecurityConfig {
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails eureka = User.builder()
+        UserDetails config = User.builder()
                 .username(configLogin).password(passwordEncoder().encode(configSenha)).roles("ADMIN").build();
         UserDetails actuator = User.builder()
                 .username(actuatorLogin).password(passwordEncoder().encode(actuatorSenha)).roles("ACTUATOR")
                 .build();
-        return new InMemoryUserDetailsManager(eureka, actuator);
+        return new InMemoryUserDetailsManager(config, actuator);
     }
 
     @Bean
